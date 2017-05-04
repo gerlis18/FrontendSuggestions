@@ -1,0 +1,68 @@
+        <img class="img-fluid mx-auto d-block" alt="Responsive image" src="../../../assets/loading/box.gif" *ngIf="loading === 'show'"
+          alt="">
+
+    <div *ngIf="serviceError === 'show'" alt="" class="row">
+    <img class="img-fluid mx-auto d-block" alt="Responsive image" src="../../../assets/pages_error/serviceNotAvalaible.png">
+    <h1 class="text-center">Servicio no disponible</h1>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+<div *ngIf="loading === 'hide' && serviceError === 'hide'" class="container">
+
+  <form (submit)="onSubmit()">
+    <h2 class="display-4 text-center">Enviar Post</h2>
+    <legend></legend>
+    <div class="panel panel-default">
+      <div class="row">
+        <div class="col-md-4 col-md-push-1">
+          <div class="form-group">
+            <input type="text" class="form-control" id="inputDefault" placeholder="Titulo" [(ngModel)]="titlePost" name="titlePost" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-push-1">
+          <div class="form-group">
+            <textarea class="form-control" rows="3" id="textArea" placeholder="Escribe una sugerencia." [(ngModel)]="suggestionPost"
+              name="suggestionPost" required></textarea>
+            <br />
+            <input type="submit" value="Enviar" class="btn btn-outline-success" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <hr class="my-3">
+
+<div *ngIf="posts == ''">
+  <br>
+  <h1 class="text-center text-danger">No hay Post Registrados, Animate!</h1>
+</div>
+  
+
+  <div *ngIf="posts != ''" >
+    <br>
+    <ul class="list-unstyled">
+      <div *ngFor="let post of posts" class="card my-3">
+        <div class="card-block">
+          <li  class="media my-2">
+            <a href="" [routerLink]="['/profile', post.username]" data-toggle="tooltip" data-placement="top" title="{{post.username}}">
+              <img class="d-flex align-self-start mr-3" src="../../../assets/images/avatar-default.png" alt="Generic placeholder image" style="width: 3rem;">
+            </a>
+            <div class="media-body">
+              <h4 class="mt-0"> {{ post.titulo }} </h4>
+              <p>{{ post.mensaje }}</p>
+              <p class="pull-right">
+                {{ post.creacion | date:'medium' }}</p>
+            </div>
+          </li>
+        </div>
+      </div>
+    </ul>
+  </div>
+
+</div>
+
+  </div>
+</div>

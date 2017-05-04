@@ -1,0 +1,87 @@
+
+    <img class="img-fluid mx-auto d-block" alt="Responsive image" src="../../../assets/loading/box.gif" *ngIf="loading === 'show'"
+      alt="">
+
+<h1 *ngIf="loading === 'hide' && saImg === 'hide'" class="display-3 text-center my-4">Mis sugerencias</h1>
+<ul *ngIf="loading === 'hide' && saImg === 'hide'" class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#sends" data-toggle="tab" aria-expanded="true">Enviadas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#toReceive" data-toggle="tab" aria-expanded="false">Recibidas</a>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+
+  <!--Inicio mis sugerencias/enviadas-->
+  <div class="tab-pane active" id="sends" role="tabpanel">
+
+
+    <ul class="list-unstyled" *ngIf="suggestions != null ||suggestions !== '' ">
+      <div *ngFor="let sugs of suggestionSend" class="card my-2">
+        <div class="card-block">
+          <li class="media my-2">
+            <a  data-toggle="tooltip" data-placement="top" title="">
+              <img class="d-flex align-self-start mr-3" src="../../../assets/images/avatar-default.png" alt="Generic placeholder image"
+                style="width: 3rem;">
+            </a>
+            <div class="media-body">
+              <h4 class="mt-0"> {{ sugs.titulo }} </h4>
+              <p>
+                {{ sugs.mensaje }}
+              </p>
+              <p class="pull-right"> {{ sugs.creacion | date:'medium' }} </p>
+            </div>
+          </li>
+        </div>
+      </div>
+    </ul>
+
+    <br>
+    <div *ngIf="suggestionSend === '' && loading === 'hide'" class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Oops!</h4>
+      <p>Al parecer no has enviado sugerencias,</p>
+      <a [routerLink]="['/suggestions/person']" href="" class="alert-link">Enviar sugerencia</a>.
+    </div>
+  </div>
+  <!--Fin mis sugerencias/enviadas-->
+
+  <!--Inicio mis sugerencias/recibidas-->
+  <div class="tab-pane fade" id="toReceive">
+
+
+
+      <ul class="list-unstyled" *ngIf="suggestionSend != null ||suggestionSend !== '' ">
+      <div *ngFor="let sugsR of suggestionReceive" class="card my-2">
+        <div class="card-block">
+          <li class="media my-2">
+            <a href="" [routerLink]="['/home']" data-toggle="tooltip" data-placement="top" title="">
+              <img class="d-flex align-self-start mr-3" src="../../../assets/images/avatar-default.png" alt="Generic placeholder image"
+                style="width: 3rem;">
+            </a>
+            <div class="media-body">
+              <h4 class="mt-0"> {{ sugsR.titulo }} </h4>
+              <p>
+                {{ sugsR.mensaje }}
+              </p>
+              <p class="pull-right"> {{ sugsR.creacion | date:'medium' }} </p>
+            </div>
+          </li>
+        </div>
+      </div>
+    </ul>
+    <br>
+    <div *ngIf="suggestionReceive == '' && loading === 'hide'" class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Oops!</h4>
+      <p>Al parecer no te han enviado sugerencias sugerencias.</p>
+    </div>
+  </div>
+  <!--Fin mis sugerencias/recibidas-->
+</div>
+
+<div *ngIf="saImg === 'show'" alt="">
+    <img class="img-fluid mx-auto d-block" alt="Responsive image" src="../../../assets/pages_error/serviceNotAvalaible.png">
+    <h1 class="text-center">Servicio no disponible</h1>
+</div>

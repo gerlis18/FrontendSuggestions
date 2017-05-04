@@ -1,0 +1,38 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3 text-center">Enviar Sugerencia</h1>
+    <form class="my-5" (submit)="onSubmit()">
+      <div class="panel panel-default">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputDefault" placeholder="Titulo" [(ngModel)]="title" name="title" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <!--<input type="text" class="form-control" id="inputDefault" placeholder="¿a quien va esta sugerencia?" [(ngModel)]="userR" name="userR" required>-->
+              <ng2-completer [(ngModel)]="userR" [datasource]="dataService" [minSearchLength]="0" name="userR" inputClass="form-control"
+                placeholder="¿para quien es la sugerencia?"></ng2-completer>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-sm col-md">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" id="textArea" placeholder="Descripcion de la sugerencia." [(ngModel)]="sugerence"
+                name="sugerence" required></textarea>
+              <br />
+              
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <input type="submit" value="Enviar" class="btn btn-outline-info btn-lg btn-block" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

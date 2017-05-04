@@ -1,0 +1,8 @@
+<div *ngFor="let i of profile">
+      <img src="../../../assets/images/avatar-default.png" alt="" class="img-fluid mx-auto d-block rounded-circle" style="width: 30%">
+      <h1 class="text-center">@{{ i.username }}</h1>
+
+      <p class="text-center"><i class="fa fa-user"></i> Nombre(s): <strong> {{ i.Nombre }} </strong></p>
+      <p class="text-center"><i class="fa fa-user"></i> Apellido(s): <strong> {{ i.Apellido }} </strong></p>
+      <p class="text-center"><i class="fa fa-user"></i> Rol: <strong> {{ i.Rol }} </strong></p>
+</div>
